@@ -12,7 +12,7 @@
         <nav aria-label="breadcrumb animated slideInDown">
           <ol class="breadcrumb mb-0">
             <li class="breadcrumb-item"><a href="{{ route('home')}}">Accueil</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('products.all') }}">Produits</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('activites.all') }}">Activités</a></li>
             <li class="breadcrumb-item active" aria-current="page">
               {{ $product->name }}
             </li>
@@ -36,7 +36,7 @@
                       <div
                         class="bg-white d-flex flex-column justify-content-center text-center rounded "
                       >
-                        <img src="{{asset('products/'.$product->image)}}" class="rounded " alt="">
+                        <img src="{{asset('activites/'.$product->image)}}" class="rounded " alt="">
                         
                       </div>
                     </div>
@@ -46,21 +46,7 @@
                     <hr>
                     <label for=""><b>Description</b></label>
                     <p class="mt-4">{{ $product->description }}</p>
-                    <hr>
-                    @php
-                        use App\Models\Organisation;
-                        $organisation = Organisation::all()->first();
-                    @endphp
-
-                    <label class="mb-4"><b>Livraison </b></label>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <a class="btn btn-primary px-3 mb-2" href="mailto:{{$organisation->email}}?subject=Bonjour cher assistant&body={{Request::getUri()}}"><i class="fas fa-envelope"></i> Contacter le fournisseur </a>
-                        </div>
-                        <div class="col-md-6">
-                            <a class="btn btn-outline-primary px-2" href="https://wa.me/{{$organisation->phone}}"><i class="fas fa-phone"></i> Contactez-nous</a>
-                        </div>
-                    </div>
+                    
                   </div>
                 
               </div>

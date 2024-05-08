@@ -56,11 +56,6 @@
         opacity: 0.7;
       }
 
-    
-      
-
- 
-
     </style>
   </head>
 
@@ -157,9 +152,9 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav mx-auto bg-light rounded pe-4 py-3 py-lg-0">
           <a href="{{ route('home') }}" class="nav-item nav-link {{ Request::routeIs('home') ? 'active' : ''}}">Accueil</a>
-          <a href="{{ route('about') }}" class="nav-item nav-link {{ Request::routeIs('about') ? 'active' : ''}}">A propos</a>
-          <a href="{{ route('services') }}" class="nav-item nav-link {{ Request::routeIs('services') ? 'active' : ''}}">Nos Services</a>
-          <a href="{{ route('products.all')}}" class="nav-item nav-link {{ Request::routeIs('products.all') ? 'active' : ''}}">Nos Engins</a>
+          <a href="{{ route('about') }}" class="nav-item nav-link {{ Request::routeIs('about') ? 'active' : ''}}">A Propos</a>
+          <a href="{{ route('services') }}" class="nav-item nav-link {{ Request::routeIs('services') ? 'active' : ''}}">Nos Produits et Services</a>
+          <a href="{{ route('activites.all')}}" class="nav-item nav-link {{ Request::routeIs('activites.all') ? 'active' : ''}}">Nos Activités</a>
           {{-- <div class="nav-item dropdown">
             <a
               href="#"
@@ -228,9 +223,9 @@
          </div>
          <div class="col-lg-3 col-md-6">
            <h5 class="text-light mb-4">Liens Rapides</h5>
-           <a class="btn btn-link" href="{{ route('about')}}">A propos de nous</a>
-           <a class="btn btn-link" href="{{ route('contact')}}">Nous contacter</a>
-           <a class="btn btn-link" href="{{ route('services')}}">Nos Services</a>
+           <a class="btn btn-link" href="{{ route('about')}}">A Propos</a>
+           <a class="btn btn-link" href="{{ route('contact')}}">Nous Contacter</a>
+           <a class="btn btn-link" href="{{ route('services')}}">Nos Produits et Services</a>
          </div>
          <div class="col-lg-3 col-md-6">
            <h5 class="text-light mb-4">Newsletter</h5>

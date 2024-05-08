@@ -39,7 +39,7 @@ class HomeController extends Controller
         $viewData['categories'] = Category::all();
 
         // Recuperation des informations des categories
-        $viewData['products'] = Product::with('category')->orderBy('id','DESC')->paginate(8);
+        $viewData['activites'] = Product::with('category')->orderBy('id','DESC')->paginate(8);
 
         // Recuperation des informations des membres
         $viewData['teams'] = Team::all();

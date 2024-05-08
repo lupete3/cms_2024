@@ -49,16 +49,13 @@
                                 <table class="table table-striped" id="table-1">
                                     <thead>                                 
                                         <tr>
-                                            <th>Image</th>
                                             <th>Nom</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($viewData['categories'] as $categorie)
-                                            <tr>
-                                                <td> <img src="{{asset('categories/'.$categorie->image)}}" style="width: 30%" alt="">  </td>
-                                                
+                                            <tr>                                                
                                                 <td>
                                                     {{ $categorie->name }}
                                                 </td>

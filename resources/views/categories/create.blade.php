@@ -10,7 +10,7 @@
                 <h1>{{ $viewData['title'] }}</h1>
                 <div class="section-header-breadcrumb">
                   <div class="breadcrumb-item active"><a href="{{ route('dashboard') }}">Dashboard</a></div>
-                  <div class="breadcrumb-item"><a href="{{ route('services.index')}}">Services</a></div>
+                  <div class="breadcrumb-item"><a href="{{ route('categories.index')}}">Catégories</a></div>
                   <div class="breadcrumb-item">{{ $viewData['title'] }}</div>
                 </div>
             </div>
@@ -50,10 +50,6 @@
                             <div class="form-group">
                               <label>Nom</label>
                               <input type="text" class="form-control" name="title" required="">
-                            </div>
-                            <div class="form-group ">
-                                <label>Image </label><br>
-                                <input type="file" name="image" required class="form-control">                                
                             </div>
                           </div>
                           <div class="card-footer text-right">

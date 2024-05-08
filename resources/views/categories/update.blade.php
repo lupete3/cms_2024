@@ -52,14 +52,7 @@
                               <input type="text" class="form-control" name="title" value="{{ $categorie->name }}" required="">
                             </div>
                             
-                            <div class="form-group ">
-                                <label>Image </label><br>
-                                <input type="file" name="image" class="form-control">                                
-                            </div>
-                            <div class="form-group ">
-                                <img src="{{asset('categories/'.$categorie->image)}}" alt="">
-                                <br>                          
-                            </div>
+                           
                           </div>
                           <div class="card-footer text-right">
                             <button type="submit" class="btn btn-primary"> Mettre à jour</button>

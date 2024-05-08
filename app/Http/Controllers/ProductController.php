@@ -16,11 +16,11 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $viewData['title'] = 'Liste des engins';
+        $viewData['title'] = 'Liste des activités';
 
-        $viewData['products'] = Product::with('category')->get();
+        $viewData['activites'] = Product::with('category')->get();
 
-        return view('products.index')->with('viewData',$viewData);
+        return view('activites.index')->with('viewData',$viewData);
     }
 
     /**
@@ -28,11 +28,11 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $viewData['title'] = 'Ajouter un engin';
+        $viewData['title'] = 'Ajouter une activité';
 
         $viewData['categories'] = Category::all();
 
-        return view('products.create')->with('viewData',$viewData);
+        return view('activites.create')->with('viewData',$viewData);
     }
 
     /**
@@ -54,7 +54,7 @@ class ProductController extends Controller
 
         $imageName = time().'.'.$request->image->extension();  
             
-        $destinationPathThumbnail = public_path('products');
+        $destinationPathThumbnail = public_path('activites');
         $img = Image::make($request->image->path());
         $img->save($destinationPathThumbnail.'/'.$imageName);
         // $img->resize(700, 700)->save($destinationPathThumbnail.'/'.$imageName);
@@ -72,7 +72,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Display products by category.
+     * Display activites by category.
      */
     public function showByCategory(Category $slug)
     {
@@ -81,37 +81,37 @@ class ProductController extends Controller
 
         $viewData['categories'] = Category::all();
 
-        $viewData['products'] = Product::where('category_id', '=', $slug->id)->paginate(6);
+        $viewData['activites'] = Product::where('category_id', '=', $slug->id)->paginate(6);
 
-        return view('products.all-visitors')->with("viewData", $viewData);
+        return view('activites.all-visitors')->with("viewData", $viewData);
     }
 
     /**
-     * Display all products for users.
+     * Display all activites for users.
      */
     public function showAllVisitors()
     {
         $viewData = [];
-        $viewData["title"] = "Tous les engins";
+        $viewData["title"] = "Toutes les activités";
 
         $viewData['categories'] = Category::all();
 
-        $viewData['products'] = Product::orderBy('id','DESC')->paginate(12);
+        $viewData['activites'] = Product::orderBy('id','DESC')->paginate(12);
 
-        return view('products.all-visitors')->with("viewData", $viewData);
+        return view('activites.all-visitors')->with("viewData", $viewData);
     }
 
     /**
-     * Display all products for users.
+     * Display all activites for users.
      */
     public function showDetail(Product $slug )
     {
         $viewData = [];
-        $viewData["title"] = "GRINCODRC | ".$slug->name;
+        $viewData["title"] = $slug->name;
 
         $product = $slug;
 
-        return view('products.detail',compact('product'))->with("viewData", $viewData);
+        return view('activites.detail',compact('product'))->with("viewData", $viewData);
     }
 
     /**
@@ -127,11 +127,11 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        $viewData['title'] = 'GRINCODRC | '.$product->name;
+        $viewData['title'] = $product->name;
 
         $viewData['categories'] = Category::all();
 
-        return view('products.update',compact('product'))->with('viewData', $viewData);
+        return view('activites.update',compact('product'))->with('viewData', $viewData);
     }
 
     /**
@@ -162,12 +162,12 @@ class ProductController extends Controller
 
             $imageName = time().'.'.$request->image->extension();  
             
-            $destinationPathThumbnail = public_path('products');
+            $destinationPathThumbnail = public_path('activites');
             $img = Image::make($request->image->path());
             $img->save($destinationPathThumbnail.'/'.$imageName);
             // $img->resize(200, 200)->save($destinationPathThumbnail.'/'.$imageName);
 
-            unlink(public_path('products/'.$product->image));
+            unlink(public_path('activites/'.$product->image));
 
             $product->image = $imageName;
 
@@ -185,11 +185,11 @@ class ProductController extends Controller
     {
         if($product->image){
 
-            unlink(public_path('products/'.$product->image));
+            unlink(public_path('activites/'.$product->image));
         }
         
         $product->delete();
 
-        return Redirect::back()->with('success', 'Catégorie supprimée avec succès');
+        return Redirect::back()->with('success', 'Activité supprimée avec succès');
     }
 }

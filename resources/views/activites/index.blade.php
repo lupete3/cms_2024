@@ -10,7 +10,7 @@
                 <h1>{{ $viewData['title'] }}</h1>
                 <div class="section-header-breadcrumb">
                   <div class="breadcrumb-item active"><a href="{{ route('dashboard') }}">Dashboard</a></div>
-                  <div class="breadcrumb-item"><a href="{{ route('products.index')}}">Produits</a></div>
+                  <div class="breadcrumb-item"><a href="{{ route('activites.index')}}">Activités</a></div>
                   <div class="breadcrumb-item">{{ $viewData['title'] }}</div>
                 </div>
             </div>
@@ -41,7 +41,7 @@
                         <div class="card-header">
                             <h4>{{ $viewData['title'] }} </h4>
                             <div class="card-header-action">
-                                <a href="{{ route('products.create')}}" class="btn btn-icon icon-left btn-success"><i class="fas fa-plus"></i> Ajouter un produit</a>
+                                <a href="{{ route('activites.create')}}" class="btn btn-icon icon-left btn-success"><i class="fas fa-plus"></i> Ajouter une activité</a>
                             </div>   
                             
                         </div>
@@ -58,10 +58,10 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($viewData['products'] as $product)
+                                        @foreach ($viewData['activites'] as $product)
                                             <tr>
                                                 <td>
-                                                    <img src="{{ asset('products/'.$product->image)}}" width="100" alt="">
+                                                    <img src="{{ asset('activites/'.$product->image)}}" width="100" alt="">
                                                 </td>                                    
                                                 <td>
                                                     {{ $product->name }}
@@ -76,8 +76,8 @@
                                                     <div class="dropdown">
                                                         <a href="#" class="dropdown-toggle btn btn-primary" data-toggle="dropdown">Action</a>
                                                         <div class="dropdown-menu dropdown-menu-right">
-                                                          <a href="{{ route('products.edit',$product->id)}}" class="dropdown-item has-icon"><i class="far fa-edit text-primary"></i> Modifier</a>
-                                                          <a href="{{ route('products.destroy', $product->id)}}" class="dropdown-item has-icon"><i class="fas fa-trash text-danger"></i> Supprimer</a>
+                                                          <a href="{{ route('activites.edit',$product->id)}}" class="dropdown-item has-icon"><i class="far fa-edit text-primary"></i> Modifier</a>
+                                                          <a href="{{ route('activites.destroy', $product->id)}}" class="dropdown-item has-icon"><i class="fas fa-trash text-danger"></i> Supprimer</a>
                                                         </div>
                                                     </div>
                                                 </td>

@@ -30,9 +30,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',[HomeController::class, 'home'])->name('home');
-Route::get('/produits/category/{slug:slug}', [ProductController::class, 'showByCategory'])->name('products.category');
-Route::get('/produits', [ProductController::class, 'showAllVisitors'])->name('products.all');
-Route::get('/produits/{slug:slug}', [ProductController::class, 'showDetail'])->name('products.detail');
+Route::get('/activites/category/{slug:slug}', [ProductController::class, 'showByCategory'])->name('activites.category');
+Route::get('/activites', [ProductController::class, 'showAllVisitors'])->name('activites.all');
+Route::get('/activites/{slug:slug}', [ProductController::class, 'showDetail'])->name('activites.detail');
 Route::post('/contacts/store', [ContactController::class, 'store'])->name('contacts.store');
 Route::get('/abouts', [HomeController::class, 'about'])->name('about');
 Route::get('/services', [HomeController::class, 'service'])->name('services');
@@ -75,12 +75,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/category/{category}/destroy', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
     
-    Route::get('/products-all', [ProductController::class, 'index'])->name('products.index');
-    Route::post('/product/store', [ProductController::class, 'store'])->name('products.store');
-    Route::get('/product/create', [ProductController::class, 'create'])->name('products.create');
-    Route::get('/product/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
-    Route::post('/product/{product}/update', [ProductController::class, 'update'])->name('products.update');
-    Route::get('/product/{product}/destroy', [ProductController::class, 'destroy'])->name('products.destroy');
+    Route::get('/activites-all', [ProductController::class, 'index'])->name('activites.index');
+    Route::post('/activites/store', [ProductController::class, 'store'])->name('activites.store');
+    Route::get('/activites-create/create', [ProductController::class, 'create'])->name('activites.create');
+    Route::get('/activites/{product}/edit', [ProductController::class, 'edit'])->name('activites.edit');
+    Route::post('/activites/{product}/update', [ProductController::class, 'update'])->name('activites.update');
+    Route::get('/activites/{product}/destroy', [ProductController::class, 'destroy'])->name('activites.destroy');
 
     Route::get('/teams-all', [TeamController::class, 'index'])->name('teams.index');
     Route::post('/teams/store', [TeamController::class, 'store'])->name('teams.store');

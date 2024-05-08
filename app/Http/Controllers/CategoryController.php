@@ -15,7 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $viewData['title'] = 'Liste des catégories des engins';
+        $viewData['title'] = 'Liste des catégories des activités';
         $viewData['categories'] = Category::all();
 
         return view('categories.index')->with('viewData',$viewData);
@@ -26,7 +26,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $viewData['title'] = 'Ajouter une catégorie engin';
+        $viewData['title'] = 'Ajouter une catégorie activité';
 
         return view('categories.create')->with('viewData',$viewData);
     }
@@ -40,21 +40,13 @@ class CategoryController extends Controller
             'title' => 'required',
         ]);
 
-        $imageName = time().'.'.$request->image->extension();  
-            
-        $destinationPathThumbnail = public_path('categories');
-        $img = Image::make($request->image->path());
-        $img->save($destinationPathThumbnail.'/'.$imageName);
-        // $img->resize(200, 200)->save($destinationPathThumbnail.'/'.$imageName);
-
         $category = new Category();
         $category->name = $request->title;
         $category->slug = Str::slug($request->title);
-        $category->image = $imageName;
 
         $category->save();
 
-        return Redirect::back()->with('success', 'Categorie engin ajoutée avec succès');
+        return Redirect::back()->with('success', 'Categorie activité ajoutée avec succès');
 
     }
 
@@ -86,11 +78,8 @@ class CategoryController extends Controller
         
         $request->validate([
             'title' => 'required',
-            'image' => 'mimes:jpeg,jpg,png,gif,svg|max:10000'
         ],[
             'title.required' => 'Entrer le nom de la catégorie',
-            'image.mimes' => 'La photo doit être [jpeg,jpg,png,gif]',
-            'image.max' => 'La photo ne peut pas dépasser 10Mb'
         ]);
 
         $category->name = $request->title;
@@ -98,36 +87,14 @@ class CategoryController extends Controller
 
         $category->save();
 
-        if($request->hasFile('image')){
-
-            $imageName = time().'.'.$request->image->extension();  
-            
-            $destinationPathThumbnail = public_path('categories');
-            $img = Image::make($request->image->path());
-            $img->save($destinationPathThumbnail.'/'.$imageName);
-            // $img->resize(200, 200)->save($destinationPathThumbnail.'/'.$imageName);
-
-            unlink(public_path('categories/'.$category->image));
-
-            $category->image = $imageName;
-
-        }
-
-        $category->save();
-
-        return Redirect::back()->with('success', 'Catégorie engin modifiée avec succès');
+        return Redirect::back()->with('success', 'Catégorie activité modifiée avec succès');
     }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Category $category)
-    {
-        if($category->image){
-
-            unlink(public_path('categories/'.$category->image));
-        }
-        
+    {        
         $category->delete();
 
         return Redirect::back()->with('success', 'Catégorie supprimée avec succès');

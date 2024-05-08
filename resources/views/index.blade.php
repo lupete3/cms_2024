@@ -289,62 +289,27 @@
 
     <!-- Product Start -->
       
-      <div class="container-fluid ">
+      <div class="container ">
         <div class="">
           <div class="row g-5">
             <div class="col-lg-12 wow fadeInUp" data-wow-delay="0.1s">
-              <h1 class="display-6 mb-5 text-center">Engins Disponibles</h1>
-              <div class="row ">
-                <div class="row text-center">
-                  <div class="col-6 col-md-3">
-                    
-                    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-                      <div class="carousel-inner">
-                        @foreach ($viewData['categories'] as $key => $category)
-                          
-                          <div class="carousel-item @if ($key == 0) active @endif">
-                            <a class=" "  href="{{ route('products.category',$category->slug )}}" data-filter="*">
-                              <img src="{{ asset('categories/'.$category->image) }}" class="d-block w-100" alt="...">
-                              <div class="carousel-caption">
-                                <p class="text-center ml-4">{{ $category->name }}</p>
-                              </div>
-                            </a>
-                          </div>
-                         
-                        @endforeach
-                        
-                      </div>
-                      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                      </button>
-                      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                      </button>
-                    </div>
-                  </div>
-                  
-                </div>
-              </div>
-
-              
-              
+              <h1 class="display-6 mb-5 text-center">Nos activités</h1>
+                            
               <div class="row g-1 mt-2">
                 
-                @foreach ($viewData['products'] as $product)
+                @foreach ($viewData['activites'] as $activite)
                   <div class="col-6 col-md-3 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="team-item rounded">
-                      <img class="img-fluid" src="{{asset('products/'.$product->image)}}" alt="" />
+                      <img class="img-fluid" src="{{asset('activites/'.$activite->image)}}" alt="" />
                       <div class="text-center p-4">
-                        <h5>{{ $product->name }}</h5>
+                        <h5>{{ $activite->name }}</h5>
                       </div>
                       <div class="team-text text-center bg-white p-4">
-                        <h5>{{ $product->name }}</h5>
-                        <p>{{ Str::limit($product->description,50) }}</p>
+                        <h5>{{ $activite->name }}</h5>
+                        <p>{{ Str::limit($activite->description,50) }}</p>
                         
                           <div class="d-flex justify-content-center">
-                            <a class="btn btn-light m-1" href="{{ route('products.detail',$product->slug)}}"
+                            <a class="btn btn-light m-1" href="{{ route('activites.detail',$activite->slug)}}"
                               ><i class="fas fa-eye"></i
                             > Voir le détail</a>
                             
@@ -358,7 +323,7 @@
               <div class="row container text-center mt-4">
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
-                  <a class="btn btn-primary py-2 px-5 "  href="{{ route('products.all')}} " data-filter="*">Autres Engins <i class="fas fa-arrow-down"></i></a>
+                  <a class="btn btn-primary py-2 px-5 "  href="{{ route('activites.all')}} " data-filter="*">Autres Activités <i class="fas fa-arrow-down"></i></a>
                 </div>
                 <div class="col-md-4"></div>
               </div>
@@ -480,7 +445,7 @@
     <div class="container-xxl py-5">
       <div class="container">
         <div class="text-center mx-auto" style="max-width: 500px">
-          <h1 class="display-6 mb-5">Rencontrez les membres de notre équipe professionnelle</h1>
+          <h1 class="display-6 mb-5">Rencontrez les membres de notre équipe </h1>
         </div>
         <div class="row g-4">
           @foreach ($viewData['teams'] as $team)
@@ -521,7 +486,7 @@
     <!-- Team End -->
 
     <!-- Testimonial Start -->
-    {{-- <div class="container-xxl py-5">
+    <div class="container-xxl py-5">
       <div class="container">
         <div class="text-center mx-auto" style="max-width: 500px">
           <h1 class="display-6 mb-5">Ce qu'ils disent à propos de nos services</h1>
@@ -529,13 +494,7 @@
         <div class="row g-5">
           <div class="col-lg-3 d-none d-lg-block">
             <div class="testimonial-left h-100">
-              @foreach ($viewData['temoignages'] as $image)
-                <img
-                class="img-fluid animated pulse infinite"
-                src="{{asset('temoignages/'.$image->image)}}"
-                alt=""
-                />  
-              @endforeach
+              
               
             </div>
           </div>
@@ -560,18 +519,12 @@
           </div>
           <div class="col-lg-3 d-none d-lg-block">
             <div class="testimonial-right h-100">
-              @foreach ($viewData['temoignages'] as $image)
-                <img
-                class="img-fluid animated pulse infinite"
-                src="{{asset('temoignages/'.$image->image)}}"
-                alt=""
-                />  
-              @endforeach
+              
             </div>
           </div>
         </div>
       </div>
-    </div> --}}
+    </div>
     <!-- Testimonial End -->
 
 

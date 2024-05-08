@@ -10,7 +10,7 @@
                 <h1>{{ $viewData['title'] }}</h1>
                 <div class="section-header-breadcrumb">
                   <div class="breadcrumb-item active"><a href="{{ route('dashboard') }}">Dashboard</a></div>
-                  <div class="breadcrumb-item"><a href="{{ route('products.index')}}">Produits</a></div>
+                  <div class="breadcrumb-item"><a href="{{ route('activites.index')}}">Activités</a></div>
                   <div class="breadcrumb-item">{{ $viewData['title'] }}</div>
                 </div>
             </div>
@@ -38,17 +38,17 @@
                             </div> 
                         @endif
                       <div class="card ">
-                        <form method="post" action="{{ route('products.update',$product->id)}}" enctype="multipart/form-data">
+                        <form method="post" action="{{ route('activites.update',$product->id)}}" enctype="multipart/form-data">
                             @csrf
                           <div class="card-header">
                             <h4>{{$viewData['title']}}</h4>
                             <div class="card-header-action">
-                                <a href="{{ route('products.index')}}" class="btn btn-icon icon-left btn-info"><i class="fas fa-list-alt"></i> Afficher les engins</a>
+                                <a href="{{ route('activites.index')}}" class="btn btn-icon icon-left btn-info"><i class="fas fa-list-alt"></i> Afficher les activités</a>
                             </div> 
                           </div>
                           <div class="card-body">
                             <div class="form-group">
-                              <label>Catégorie engin</label>
+                              <label>Catégorie activité</label>
                               <select name="category" class="form-control" id="" required>
                                 @foreach ($viewData['categories'] as $category)
                                     <option value="{{ $category->id }}" {{($product->category_id == $category->id) ? 'selected' : '' }}>{{ $category->name }}</option>
@@ -56,19 +56,19 @@
                               </select>
                             </div>
                             <div class="form-group">
-                              <label>Nom</label>
+                              <label>Titre activité</label>
                               <input type="text" class="form-control" name="title" value="{{ $product->name }}" required="">
                             </div>
                             <div class="form-group">
                               <label>Descriprion</label>
-                              <textarea class="form-control" name="description" cols="30" rows="40">{{ $product->description }}</textarea>
+                              <textarea class="summernote" name="description" cols="30" rows="40">{{ $product->description }}</textarea>
                             </div>
                             <div class="form-group ">
                                 <label>Image </label><br>
                                 <input type="file" name="image" class="form-control">                                
                             </div>
                             <div class="form-group ">
-                                <img src="{{ asset('products/'.$product->image)}}" alt="">
+                                <img src="{{ asset('activites/'.$product->image)}}" alt="">
                             </div>
                           </div>
                           <div class="card-footer text-right">

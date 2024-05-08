@@ -10,7 +10,7 @@
                 <h1>{{ $viewData['title'] }}</h1>
                 <div class="section-header-breadcrumb">
                   <div class="breadcrumb-item active"><a href="{{ route('dashboard') }}">Dashboard</a></div>
-                  <div class="breadcrumb-item"><a href="{{ route('services.index')}}">Services</a></div>
+                  <div class="breadcrumb-item"><a href="{{ route('activites.index')}}">Activités</a></div>
                   <div class="breadcrumb-item">{{ $viewData['title'] }}</div>
                 </div>
             </div>
@@ -38,17 +38,17 @@
                             </div> 
                         @endif
                       <div class="card ">
-                        <form method="post" action="{{ route('products.store')}}" enctype="multipart/form-data">
+                        <form method="post" action="{{ route('activites.store')}}" enctype="multipart/form-data">
                             @csrf
                           <div class="card-header">
                             <h4>{{$viewData['title']}}</h4>
                             <div class="card-header-action">
-                                <a href="{{ route('products.index')}}" class="btn btn-icon icon-left btn-info"><i class="fas fa-list-alt"></i> Afficher les engins</a>
+                                <a href="{{ route('activites.index')}}" class="btn btn-icon icon-left btn-info"><i class="fas fa-list-alt"></i> Afficher les activités</a>
                             </div> 
                           </div>
                           <div class="card-body">
                             <div class="form-group">
-                              <label>Catégorie engin</label>
+                              <label>Catégorie activité</label>
                               <select name="category" class="form-control" id="" required>
                                 @foreach ($viewData['categories'] as $category)
                                     <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -59,9 +59,9 @@
                               <label>Nom</label>
                               <input type="text" class="form-control" name="title" required="">
                             </div>
-                            <div class="form-group">
-                              <label>Descriprion</label>
-                              <textarea class="form-control" name="description" cols="30" rows="10"></textarea>
+                            <div class="form-group ">
+                              <label>Description</label>
+                              <textarea class="summernote" name="description" required="">{{ old('description') }}</textarea>
                             </div>
                             <div class="form-group ">
                                 <label>Image </label><br>
