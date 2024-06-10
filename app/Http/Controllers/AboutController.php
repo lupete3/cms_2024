@@ -25,7 +25,7 @@ class AboutController extends Controller
         $viewData = [];
 
         $viewData['title'] = 'Modifier les information Apropos';
-        
+
         $viewData['abouts'] = About::all();
 
         return view('about.create')->with('viewData', $viewData);
@@ -36,7 +36,7 @@ class AboutController extends Controller
      */
     public function store(Request $request)
     {
-        
+
     }
 
     /**
@@ -76,12 +76,13 @@ class AboutController extends Controller
         $about->text2 = $request->raison2;
         $about->img2 = $request->icon2;
         $about->full_description = $request->full_description;
+        $about->projets = $request->projets;
 
         $about->save();
 
         if($request->hasFile('about_img')){
-            
-            $imageName = time().'.'.$request->about_img->extension();  
+
+            $imageName = time().'.'.$request->about_img->extension();
             // $request->couverture->move('images', $imageName);
 
             $destinationPathThumbnail = public_path('about');

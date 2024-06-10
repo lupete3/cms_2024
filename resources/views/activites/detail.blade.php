@@ -30,25 +30,21 @@
             <div class="col-lg-12 wow fadeInUp" data-wow-delay="0.1s">
               
               <div class="row g-3">
-                
-                  <div class="col-sm-5 wow fadeIn" data-wow-delay="0.1s">
-                    <div class=" rounded  h-100 p-1">
-                      <div
-                        class="bg-white d-flex flex-column justify-content-center text-center rounded "
-                      >
-                        <img src="{{asset('activites/'.$product->image)}}" class="rounded " alt="">
-                        
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-7 wow fadeIn" data-wow-delay="0.1s">
+                  <div class="col-sm-12 wow fadeIn" data-wow-delay="0.1s">
                     <h3 class="mb-0 mt-2">{{ $product->name }}</h3> 
                     <hr>
-                    <label for=""><b>Description</b></label>
-                    <p class="mt-4">{{ $product->description }}</p>
+                    <div class="  h-100 p-1">
+                        <div class="bg-white d-flex flex-column justify-content-center text-center rounded ">
+                          <img src="{{asset('activites/'.$product->image)}}" class="rounded " alt="">
+                        </div>
+
+                        <div class="mt-4">
+                            {!! $product->description !!}
+                        </div>
+
+                    </div>
                     
                   </div>
-                
               </div>
               
             </div>

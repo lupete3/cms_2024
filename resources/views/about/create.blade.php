@@ -4,7 +4,7 @@
 
     <!-- Main Content -->
     <div class="main-content">
-        
+
         <section class="section">
             <div class="section-header">
                 <h1>{{ $viewData['title'] }}</h1>
@@ -16,7 +16,7 @@
             </div>
 
             <div class="section-body ">
-            
+
                 <div class="row">
                     <div class="col-12 col-md-12 col-lg-12 align-center">
                         @if($errors->any())
@@ -35,11 +35,11 @@
                             <h6>
                                 {{ Session::get('success') }}
                             </h6>
-                            </div> 
+                            </div>
                         @endif
                       <div class="card ">
                         @foreach ($viewData['abouts'] as $about)
-                        
+
                           <form method="post" action="{{ route('about.update',$about->id)}}" enctype="multipart/form-data">
                               @csrf
                             <div class="card-header">
@@ -89,8 +89,14 @@
                               </div>
                               <div class="form-group mb-0">
                                 <label>Description Coplète</label>
-                                <textarea class="form-control" name="full_description" required="">{{ $about->full_description }}</textarea>
+                                <textarea class="form-control summernote" name="full_description" required="">{{ $about->full_description }}</textarea>
                               </div>
+                              <div class="form-group mb-0">
+                                <label>Nos projets</label>
+                                <textarea class="form-control summernote" name="projets" required="">{{ $about->projets }}</textarea>
+                              </div>
+
+                              <br>
                               <div class="form-group">
                                 <div class="form-group row mb-4">
                                   <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Icone du text 1</label>

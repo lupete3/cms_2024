@@ -10,7 +10,7 @@
     <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Dashboard</h1>
+            <h1>Tableau de bord</h1>
           </div>
           <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
@@ -20,10 +20,10 @@
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
-                    <h4>Total Admin</h4>
+                    <h4>Total Membres</h4>
                   </div>
                   <div class="card-body">
-                    10
+                    {{ count($viewData['membres']) }}
                   </div>
                 </div>
               </div>
@@ -35,10 +35,10 @@
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
-                    <h4>News</h4>
+                    <h4>Activités</h4>
                   </div>
                   <div class="card-body">
-                    42
+                    {{ count($viewData['activites']) }}
                   </div>
                 </div>
               </div>
@@ -46,14 +46,14 @@
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
               <div class="card card-statistic-1">
                 <div class="card-icon bg-warning">
-                  <i class="far fa-file"></i>
+                  <i class="fas fa-users"></i>
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
-                    <h4>Reports</h4>
+                    <h4>Témoignages</h4>
                   </div>
                   <div class="card-body">
-                    1,201
+                    {{ count($viewData['temoignages']) }}
                   </div>
                 </div>
               </div>
@@ -61,14 +61,14 @@
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
               <div class="card card-statistic-1">
                 <div class="card-icon bg-success">
-                  <i class="fas fa-circle"></i>
+                  <i class="fas fa-envelope"></i>
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
-                    <h4>Online Users</h4>
+                    <h4>Mails</h4>
                   </div>
                   <div class="card-body">
-                    47
+                    {{ count($viewData['mails']) }}
                   </div>
                 </div>
               </div>
@@ -90,13 +90,31 @@
                           $currentTime = Carbon::now();
                           Carbon::setLocale('fr');
                         @endphp
-                        <a href="" >
-                          <img class="mr-3 rounded-circle" width="50" src="{{asset('assets/backend/img/avatar/avatar-'.$number.'.png ')}}" alt="avatar">
+                        <a  data-toggle="collapse" href="#collapseExample{{$contact->id}}" role="button" aria-expanded="false" aria-controls="collapseExample{{$contact->id}}">
+                                <img class="mr-3 rounded-circle" width="50" src="{{asset('assets/backend/img/avatar/avatar-'.$number.'.png ')}}" alt="avatar">
                         </a>
                         <div class="media-body">
-                          <div class="float-right text-primary">{{ $contact->created_at->diffForHumans() }}</div>
-                          <div class="media-title">{{ $contact->name }}</div>
-                          <span class="text-small text-muted">{{ $contact->object }}</span>
+                          <div class="float-right text-primary">
+                            {{ $contact->created_at->diffForHumans() }}
+                            <a href="{{ route('deleteContact', $contact->id) }}" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
+                        </div>
+                          <div class="media-title">
+                            <a  data-toggle="collapse" href="#collapseExample{{$contact->id}}" role="button" aria-expanded="false" aria-controls="collapseExample{{$contact->id}}">
+                                {{ $contact->name }}
+                            </a>
+                            
+                        </div>
+                        <span class="text-small text-muted">{{ $contact->object }}</span> <br>
+                        <span class="text-small text-muted"><a href="mailto:{{ $contact->email }}">{{ $contact->email }}</a></span>
+                          
+                            <div class="card-body">
+                               
+                                <div class="collapse" id="collapseExample{{$contact->id}}">
+                                <p>
+                                    {{$contact->message}}
+                                </p>
+                                </div>
+                            </div>
                         </div>
                       
                       </li>   
@@ -106,9 +124,7 @@
                     
                   </ul>
                   <div class="text-center pt-1 pb-1">
-                    <a href="#" class="btn btn-primary btn-lg btn-round">
-                      Afficher tout
-                    </a>
+                    {!! $viewData['contacts']->links() !!}
                   </div>
                 </div>
               </div>

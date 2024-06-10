@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('img2')->nullable();
             $table->text('full_description')->nullable();
             $table->string('about_img')->nullable();
+            $table->fullText('projets')->nullable();
             $table->timestamps();
         });
     }

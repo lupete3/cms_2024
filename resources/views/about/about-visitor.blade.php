@@ -193,9 +193,25 @@
             
           </div>
         </div>
-      </div>
-      <!-- Team End -->
+    </div>
+    <!-- Team End -->
     
+    <!-- Vendor Start -->
+    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="text-center mx-auto" style="max-width: 500px">
+            <h1 class="display-6 mb-5">Nos partenaires</h1>
+        </div>
+        <div class="container py-5 mb-5">
+            <div class="bg-white">
+                <div class="owl-carousel vendor-carousel">
+                    @foreach ($viewData['partenaires'] as $partenaire)
+                        <img src="{{asset('partenaires/'.$partenaire->image)}}" alt="">
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Vendor End -->
 
     
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>General Dashboard &mdash; Stisla</title>
+  <title>{{ $viewData['title'] }}</title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="{{asset('assets/backend/modules/bootstrap/css/bootstrap.min.css ')}}">
@@ -49,68 +49,6 @@
             <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
             <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
           </ul>
-          <div class="search-element">
-            <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250">
-            <button class="btn" type="submit"><i class="fas fa-search"></i></button>
-            <div class="search-backdrop"></div>
-            <div class="search-result">
-              <div class="search-header">
-                Histories
-              </div>
-              <div class="search-item">
-                <a href="#">How to hack NASA using CSS</a>
-                <a href="#" class="search-close"><i class="fas fa-times"></i></a>
-              </div>
-              <div class="search-item">
-                <a href="#">Kodinger.com</a>
-                <a href="#" class="search-close"><i class="fas fa-times"></i></a>
-              </div>
-              <div class="search-item">
-                <a href="#">#Stisla</a>
-                <a href="#" class="search-close"><i class="fas fa-times"></i></a>
-              </div>
-              <div class="search-header">
-                Result
-              </div>
-              <div class="search-item">
-                <a href="#">
-                  <img class="mr-3 rounded" width="30" src="{{asset('assets/backend/img/products/product-3-50.png ')}}" alt="product">
-                  oPhone S9 Limited Edition
-                </a>
-              </div>
-              <div class="search-item">
-                <a href="#">
-                  <img class="mr-3 rounded" width="30" src="{{asset('assets/backend/img/products/product-2-50.png ')}}" alt="product">
-                  Drone X2 New Gen-7
-                </a>
-              </div>
-              <div class="search-item">
-                <a href="#">
-                  <img class="mr-3 rounded" width="30" src="{{asset('assets/backend/img/products/product-1-50.png ')}}" alt="product">
-                  Headphone Blitz
-                </a>
-              </div>
-              <div class="search-header">
-                Projects
-              </div>
-              <div class="search-item">
-                <a href="#">
-                  <div class="search-icon bg-danger text-white mr-3">
-                    <i class="fas fa-code"></i>
-                  </div>
-                  Stisla Admin Template
-                </a>
-              </div>
-              <div class="search-item">
-                <a href="#">
-                  <div class="search-icon bg-primary text-white mr-3">
-                    <i class="fas fa-laptop"></i>
-                  </div>
-                  Create a new Homepage Design
-                </a>
-              </div>
-            </div>
-          </div>
         </form>
         <ul class="navbar-nav navbar-right">
           
@@ -140,20 +78,20 @@
       <div class="main-sidebar sidebar-style-2">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
-            <a href="{{ route('dashboard')}}">Dashboard</a>
+            <a href="{{ route('dashboard')}}">Tableau de bord</a>
           </div>
           <div class="sidebar-brand sidebar-brand-sm">
             <a href="/" target="__blank">Visiter le site</a>
           </div>
           <ul class="sidebar-menu">
-            <li class="menu-header">Dashboard</li>
+            <li class="menu-header">Tableau de bord</li>
             <li class="dropdown @if (request()->routeIs('dashboard')) active @endif">
-              <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Dashboard</span></a>
+              <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Tableau de bord</span></a>
               <ul class="dropdown-menu">
-                <li class=active><a class="nav-link" href="{{ route('dashboard')}}"> Dashboard</a></li>
+                <li class=active><a class="nav-link" href="{{ route('dashboard')}}"> Tableau de bord</a></li>
               </ul>
             </li>
-            <li class="menu-header">Starter</li>
+            <li class="menu-header">Menus</li>
             <li><a class="nav-link" href="{{route('slides.index')}}"><i class="fa fa-images"></i> <span>Slides</span></a></li>
             <li><a class="nav-link" href="{{route('about.create')}}"><i class="fa fa-home"></i> <span>Apropos</span></a></li>
             <li><a class="nav-link" href="{{route('success.create')}}"><i class="fa fa-check"></i> <span>Parcours</span></a></li>
@@ -166,14 +104,14 @@
               </ul>
             </li>
             <li class="dropdown">
-              <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-car"></i> <span>Catégorie Activités</span></a>
+              <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-book"></i> <span>Catégorie Activités</span></a>
               <ul class="dropdown-menu">
                 <li><a class="nav-link" href="{{route('categories.create')}}">Ajouter Catégorie</a></li>
                 <li><a class="nav-link" href="{{route('categories.index')}}">Liste des catégories</a></li>
               </ul>
             </li>
             <li class="dropdown">
-              <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-car"></i> <span> Activités</span></a>
+              <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-list"></i> <span> Activités</span></a>
               <ul class="dropdown-menu">
                 <li><a class="nav-link" href="{{route('activites.create')}}">Ajouter une activité</a></li>
                 <li><a class="nav-link" href="{{route('activites.index')}}">Liste des activités</a></li>
@@ -191,6 +129,20 @@
               <ul class="dropdown-menu">
                 <li><a class="nav-link" href="{{route('temoignages.create')}}">Ajouter un témoignage</a></li>
                 <li><a class="nav-link" href="{{route('temoignages.index')}}">Liste des témoignages</a></li>
+              </ul>
+            </li> 
+            <li class="dropdown">
+              <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-user"></i> <span> Partenaires</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="{{route('partenaires.create')}}">Ajouter partenaire</a></li>
+                <li><a class="nav-link" href="{{route('partenaires.index')}}">Liste des partenaires</a></li>
+              </ul>
+            </li>   
+            <li class="dropdown">
+              <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-images"></i> <span> Galerie photos</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="{{route('galeries.create')}}">Ajouter une photo</a></li>
+                <li><a class="nav-link" href="{{route('galeries.index')}}">Liste des photos</a></li>
               </ul>
             </li>          
             <li><a class="nav-link" href="{{ route('organisations.create')}}"><i class="fas fa-pencil-ruler"></i> <span>Votre Organisation</span></a></li>

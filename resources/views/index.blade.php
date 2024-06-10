@@ -1,7 +1,7 @@
 @extends('layouts.frontend')
 
 @section('content')
-    
+
     <!-- Carousel Start -->
     <div class="container-fluid p-0 mb-5 wow fadeIn" data-wow-delay="0.1s">
       <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
@@ -9,9 +9,9 @@
             @foreach ($viewData['slides'] as $key => $slide)
                 <div class="carousel-item w-100 @if($key < 1) active @endif" >
                 <img class="w-100 shadow" src="{{asset('slides/'.$slide->image)}}" alt="Image" >
-                    <div class="carousel-caption" style="  
-                
-                    background: linear-gradient(rgba(3, 23, 47, 0.5), 
+                    <div class="carousel-caption" style="
+
+                    background: linear-gradient(rgba(3, 23, 47, 0.5),
                     rgba(2, 13, 26, 0.9)), center right no-repeat;
                     background-size: cover;
                     ">
@@ -19,7 +19,7 @@
                         <div class="row">
                         <div class="col-12 col-lg-8">
                             <h1 class="display-3 text-white mb-4 animated slideInDown">
-                            {{ $slide->title }} 
+                            {{ $slide->title }}
                             </h1>
                             <p class="fs-5 text-white mb-5">
                                 {{ $slide->description }}
@@ -33,7 +33,7 @@
                     </div>
                 </div>
             @endforeach
-          
+
         </div>
         <button
           class="carousel-control-prev"
@@ -59,7 +59,7 @@
 
     <!-- About Start -->
     @foreach ($viewData['abouts'] as $about)
-    
+
       <div class="container-xxl py-5">
         <div class="container">
           <div class="row g-5">
@@ -124,14 +124,14 @@
 
     <!-- Facts Start -->
     @foreach ($viewData['successes'] as $success)
-        
+
       <div class="container-fluid overflow-hidden my-5 px-lg-0">
         <div class="container facts px-lg-0">
           <div class="row g-0 mx-lg-0">
-            <div class="col-lg-6 facts-text wow fadeIn" data-wow-delay="0.1s" 
+            <div class="col-lg-6 facts-text wow fadeIn" data-wow-delay="0.1s"
               style="
-                background: linear-gradient(rgba(1, 95, 201, 0.5), 
-                rgba(4, 43, 88, 0.5)), 
+                background: linear-gradient(rgba(1, 95, 201, 0.5),
+                rgba(4, 43, 88, 0.5)),
                 url(@php echo asset('success/'.$success->img1)@endphp) center right no-repeat;
                 background-size: cover;
               " >
@@ -147,11 +147,11 @@
             </div>
             <div class="col-lg-6 facts-counter wow fadeIn" data-wow-delay="0.5s"
               style="
-                background: linear-gradient(rgba(255, 255, 255, .9), rgba(255, 255, 255, .9)),  
+                background: linear-gradient(rgba(255, 255, 255, .9), rgba(255, 255, 255, .9)),
                 url(@php echo asset('success/'.$success->img2)@endphp) center right no-repeat;
                 background-size: cover;
               " >
-              
+
               <div class="h-100 px-4 pe-lg-0">
                 <div class="row g-5">
                   <div class="col-sm-6">
@@ -182,7 +182,7 @@
 
     <!-- Features Start -->
     @foreach ($viewData['reasons'] as $reason)
-      
+
       <div class="container-xxl py-5">
         <div class="container">
           <div class="row g-5">
@@ -259,7 +259,7 @@
       <div class="container">
         <div class="text-center mx-auto" style="max-width: 500px">
           <h1 class="display-6 mb-5">
-            Nous fournissons des services professionnels 
+            Nous fournissons des services professionnels
           </h1>
         </div>
         <div class="row g-4 justify-content-center">
@@ -281,22 +281,22 @@
               </div>
             </div>
           @endforeach
-          
+
         </div>
       </div>
     </div>
     <!-- Service End -->
 
     <!-- Product Start -->
-      
+
       <div class="container ">
         <div class="">
           <div class="row g-5">
             <div class="col-lg-12 wow fadeInUp" data-wow-delay="0.1s">
               <h1 class="display-6 mb-5 text-center">Nos activités</h1>
-                            
+
               <div class="row g-1 mt-2">
-                
+
                 @foreach ($viewData['activites'] as $activite)
                   <div class="col-6 col-md-3 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="team-item rounded">
@@ -306,24 +306,24 @@
                       </div>
                       <div class="team-text text-center bg-white p-4">
                         <h5>{{ $activite->name }}</h5>
-                        <p>{{ Str::limit($activite->description,50) }}</p>
-                        
+                        <p>{!! Str::limit($activite->description,50) !!}</p>
+
                           <div class="d-flex justify-content-center">
                             <a class="btn btn-light m-1" href="{{ route('activites.detail',$activite->slug)}}"
                               ><i class="fas fa-eye"></i
                             > Voir le détail</a>
-                            
+
                           </div>
                       </div>
                     </div>
-                  </div>  
+                  </div>
                 @endforeach
 
               </div>
               <div class="row container text-center mt-4">
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
-                  <a class="btn btn-primary py-2 px-5 "  href="{{ route('activites.all')}} " data-filter="*">Autres Activités <i class="fas fa-arrow-down"></i></a>
+                  <a class="btn btn-primary py-2 px-5 "  href="{{ route('activites.all')}} " data-filter="*">Autres Activités <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="col-md-4"></div>
               </div>
@@ -346,7 +346,7 @@
 
             $organisations = Organisation::latest()->get();
             foreach ($organisations as $organisation) {
-                    
+
             }
           @endphp
           <div class="col-lg-6 wow fadeIn" data-wow-delay="0.3s">
@@ -356,7 +356,7 @@
             <p class="text-white mb-5">
               {!! $about->telephone !!}
             </p>
-            
+
           </div>
           <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
             <div class="bg-white rounded p-5">
@@ -376,7 +376,7 @@
                             <h6>
                                 {{ Session::get('success') }}
                             </h6>
-                          </div> 
+                          </div>
                       @endif
                   </div>
                   <div class="col-sm-6">
@@ -459,7 +459,7 @@
                 <div class="team-text text-center bg-white p-4">
                   <h5>{{ $team->name }}</h5>
                   <p>{{ $team->role }}</p>
-                  
+
                     <div class="d-flex justify-content-center">
                       <a class="btn btn-square btn-light m-1" href="{{ $organisation->twitter }}"
                         ><i class="fab fa-twitter"></i
@@ -478,8 +478,8 @@
               </div>
             </div>
           @endforeach
-          
-          
+
+
         </div>
       </div>
     </div>
@@ -494,8 +494,8 @@
         <div class="row g-5">
           <div class="col-lg-3 d-none d-lg-block">
             <div class="testimonial-left h-100">
-              
-              
+
+
             </div>
           </div>
           <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
@@ -514,12 +514,12 @@
                   <span>{{ $temoignage->title }}</span>
                 </div>
               @endforeach
-             
+
             </div>
           </div>
           <div class="col-lg-3 d-none d-lg-block">
             <div class="testimonial-right h-100">
-              
+
             </div>
           </div>
         </div>
@@ -527,8 +527,26 @@
     </div>
     <!-- Testimonial End -->
 
+      </div>
+      <!-- Testimonial End -->
+    <!-- Vendor Start -->
+    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="text-center mx-auto" style="max-width: 500px">
+            <h1 class="display-6 mb-5">Nos partenaires</h1>
+        </div>
+        <div class="container py-5 mb-5">
+            <div class="bg-white">
+                <div class="owl-carousel vendor-carousel">
+                    @foreach ($viewData['partenaires'] as $partenaire)
+                        <img src="{{asset('partenaires/'.$partenaire->image)}}" alt="">
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Vendor End -->
 
 @endsection
 
 
-   
+

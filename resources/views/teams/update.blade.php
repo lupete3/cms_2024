@@ -62,7 +62,7 @@
                                 <input type="file" name="image" class="form-control">                                
                             </div>
                             <div class="form-group ">
-                                <img src="{{asset('teams/'.$team->image)}}" alt="">                              
+                                <img src="{{asset('teams/'.$team->image)}}" style="width: 30%" alt="">                              
                             </div>
                           </div>
                           <div class="card-footer text-right">

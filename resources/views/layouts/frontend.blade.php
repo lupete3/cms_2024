@@ -30,7 +30,7 @@
 
     <!-- Libraries Stylesheet -->
     <link href="{{ asset('assets/frontend/lib/animate/animate.min.css ')}}" rel="stylesheet" />
-    <link href="{{ asset('assets/frontend/lib/owlcarousel/asset/owl.carousel.min.css ')}}" rel="stylesheet" />
+    <link href="{{ asset('assets/frontend/lib/owlcarousel/assets/owl.carousel.min.css ')}}" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{ asset('assets/frontend/css/bootstrap.min.css ')}}" rel="stylesheet" />
@@ -38,8 +38,6 @@
     <!-- Template Stylesheet -->
     <link href="{{ asset('assets/frontend/css/style.css ')}}" rel="stylesheet" />
 
-    <link href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" rel="stylesheet" />
-  
     <style>
       .ico{
         font-size: 60px;
@@ -81,12 +79,12 @@
 
 @endphp
     <!-- Spinner Start -->
-    <div
+    {{-- <div
       id="spinner"
       class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center"
     >
       <div class="spinner-grow text-primary" role="status"></div>
-    </div>
+    </div> --}}
     <!-- Spinner End -->
 
     <!-- Topbar Start -->
@@ -154,6 +152,8 @@
           <a href="{{ route('home') }}" class="nav-item nav-link {{ Request::routeIs('home') ? 'active' : ''}}">Accueil</a>
           <a href="{{ route('about') }}" class="nav-item nav-link {{ Request::routeIs('about') ? 'active' : ''}}">A Propos</a>
           <a href="{{ route('services') }}" class="nav-item nav-link {{ Request::routeIs('services') ? 'active' : ''}}">Nos Produits et Services</a>
+          <a href="{{ route('projets') }}" class="nav-item nav-link {{ Request::routeIs('projets') ? 'active' : ''}}">Nos Projets</a>
+          <a href="{{ route('galeries') }}" class="nav-item nav-link {{ Request::routeIs('galeries') ? 'active' : ''}}">Galerie Photos</a>
           <a href="{{ route('activites.all')}}" class="nav-item nav-link {{ Request::routeIs('activites.all') ? 'active' : ''}}">Nos Activités</a>
           {{-- <div class="nav-item dropdown">
             <a
@@ -231,7 +231,7 @@
            <h5 class="text-light mb-4">Newsletter</h5>
            <p>Abonnez-vous pour recevoir nos newslatter</p>
            <div class="position-relative mx-auto" style="max-width: 400px">
-            
+
             <form action="{{ route('subsciber.store')}}" method="post">
               @csrf
              <input
@@ -261,7 +261,7 @@
                       <h6>
                           {{ Session::get('success') }}
                       </h6>
-                    </div> 
+                    </div>
                 @endif
             </div>
            </div>
@@ -276,7 +276,7 @@
            </div>
            <div class="col-md-6 text-center text-md-end">
              <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-             Designed By <a href="https://pdevtuto.com">Pdevtuto</a>
+              <a href="https://pdevtuto.com">COOPABU</a>
            </div>
          </div>
        </div>
@@ -289,25 +289,18 @@
      ><i class="bi bi-arrow-up"></i
    ></a>
 
-   <!-- JavaScript Libraries -->
-   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-   <script src="{{asset('assets/frontend/lib/wow/wow.min.js ') }}"></script>
-   <script src="{{asset('assets/frontend/lib/easing/easing.min.js ') }}"></script>
-   <script src="{{asset('assets/frontend/lib/waypoints/waypoints.min.js ') }}"></script>
-   {{-- <script src="{{asset('assets/frontend/lib/owlcarousel/owl.carousel.min.js ') }}"></script> --}}
-   <script src="{{asset('assets/frontend/lib/counterup/counterup.min.js ') }}"></script>
 
-   <script src="{{asset('assets/frontend/owlcarousel2/dist/owl.carousel.min.js') }}"></script>
-   
-  <script src="{{asset('assets/frontend/modules/jquery.min.js ') }}"></script>
-  <script src="{{asset('assets/frontend/modules/popper.js ') }}"></script>
-  <script src="{{asset('assets/frontend/modules/chart.min.js ') }}"></script>
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{asset('assets/frontend/lib/wow/wow.min.js ') }}"></script>
+    <script src="{{asset('assets/frontend/lib/easing/easing.min.js ') }}"></script>
+    <script src="{{asset('assets/frontend/lib/waypoints/waypoints.min.js ') }}"></script>
+    <script src="{{asset('assets/frontend/lib/owlcarousel/owl.carousel.min.js ') }}"></script>
+    <script src="{{asset('assets/frontend/lib/counterup/counterup.min.js ') }}"></script>
 
+    <!-- Template Javascript -->
+    <script src="{{asset('assets/frontend/js/main.js ') }}"></script>
 
-
-   <!-- Template Javascript -->
-   <script src="{{asset('assets/frontend/js/main.js ') }}"></script>
-   
  </body>
 </html>

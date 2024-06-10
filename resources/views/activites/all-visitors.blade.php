@@ -48,7 +48,7 @@
                       </div>
                       <div class="team-text text-center bg-white p-4">
                         <h5>{{ $product->name }}</h5>
-                        <p>{{ Str::limit($product->description,50) }}</p>
+                        <p>{!! Str::limit($product->description,50) !!}</p>
                         
                           <div class="d-flex justify-content-center">
                             <a class="btn btn-light m-1" href="{{ route('activites.detail',$product->slug)}}"

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use App\Models\Category;
+use App\Models\Galery;
+use App\Models\Partenaire;
 use App\Models\Product;
 use App\Models\Reason;
 use App\Models\Service;
@@ -18,7 +20,7 @@ class HomeController extends Controller
     public function home()
     {
         $viewData = [];
-        $viewData['title'] = 'GRINCO RDC';
+        $viewData['title'] = 'COOPABU RDC';
 
         // Recuperation des slides
         $viewData['slides'] = Slide::all();
@@ -45,7 +47,10 @@ class HomeController extends Controller
         $viewData['teams'] = Team::all();
 
         // Recuperation des informations des temoignages
-        $viewData['temoignages'] = Temoignage::orderBy('id','DESC')->paginate(3);
+        $viewData['temoignages'] = Temoignage::orderBy('id','DESC')->get();
+
+        // Recuperation des informations des partenaires
+        $viewData['partenaires'] = Partenaire::orderBy('id','DESC')->get();
 
         return view('index')->with('viewData', $viewData);
     }
@@ -64,7 +69,21 @@ class HomeController extends Controller
         // Recuperation des informations des membres
         $viewData['teams'] = Team::all();
 
+        // Recuperation des informations des partenaires
+        $viewData['partenaires'] = Partenaire::orderBy('id','DESC')->get();
+
         return view('about.about-visitor')->with('viewData', $viewData);
+    }
+
+    public function projets()
+    {
+        $viewData = [];
+        $viewData['title'] = 'Nos projets';
+
+        // Recuperation des informations apropos
+        $viewData['abouts'] = About::all();
+
+        return view('about.projets-visitor')->with('viewData', $viewData);
     }
 
     public function service()
@@ -78,6 +97,17 @@ class HomeController extends Controller
         return view('services.service-visitor')->with('viewData', $viewData);
     }
 
+    public function galeries()
+    {
+        $viewData = [];
+        $viewData['title'] = 'Nos galeries photos';
+
+        // Recuperation des informations des services
+        $viewData['galeries'] = Galery::latest()->get();
+
+        return view('about.galery-visitor')->with('viewData', $viewData);
+    }
+
     public function contact()
     {
         $viewData = [];
@@ -85,6 +115,6 @@ class HomeController extends Controller
 
         return view('contact')->with('viewData', $viewData);
     }
-    
-    
+
+
 }

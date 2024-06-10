@@ -80,7 +80,7 @@ class TemoignageController extends Controller
      */
     public function edit(Temoignage $temoignage)
     {
-        $viewData['title'] = 'GRONCODRC |'.$temoignage->name;
+        $viewData['title'] = 'COOPABU |'.$temoignage->name;
 
         return view('temoignages.update',compact('temoignage'))->with('viewData', $viewData);
     }

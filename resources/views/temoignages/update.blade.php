@@ -38,7 +38,7 @@
                             </div> 
                         @endif
                       <div class="card ">
-                        <form method="post" action="{{ route('temoignages.store')}}" enctype="multipart/form-data">
+                        <form method="post" action="{{ route('temoignages.update',$temoignage->id)}}" enctype="multipart/form-data">
                             @csrf
                           <div class="card-header">
                             <h4>{{$viewData['title']}}</h4>
@@ -49,23 +49,26 @@
                           <div class="card-body">
                             <div class="form-group">
                               <label>Nom Client</label>
-                              <input type="text" class="form-control" name="name" required="">
+                              <input type="text" class="form-control" name="name" value="{{ $temoignage->name }}" required="">
                             </div>
                             <div class="form-group">
                               <label>Fonction</label>
-                              <input type="text" class="form-control" name="title" required="">
+                              <input type="text" class="form-control" name="title" value="{{ $temoignage->title }}" required="">
                             </div>
                             <div class="form-group">
                               <label>Témoignage</label>
-                              <textarea class="form-control" name="description" cols="30" rows="10"></textarea>
+                              <textarea class="form-control" name="description" cols="30" rows="10">{{ $temoignage->description }}</textarea>
                             </div>
                             <div class="form-group ">
                                 <label>Image </label><br>
-                                <input type="file" name="image" required class="form-control">                                
+                                <input type="file" name="image" class="form-control">                                
                             </div>
+                            <div class="form-group ">
+                              <img src="{{asset('temoignages/'.$temoignage->image)}}" alt="">                              
+                          </div>
                           </div>
                           <div class="card-footer text-right">
-                            <button type="submit" class="btn btn-primary">Enregistrer</button>
+                            <button type="submit" class="btn btn-primary">Mettre à jour</button>
                           </div>
                         </form>
                       </div>

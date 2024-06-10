@@ -4,8 +4,10 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GaleryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrganisationController;
+use App\Http\Controllers\PartenaireController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReasonController;
@@ -36,6 +38,8 @@ Route::get('/activites/{slug:slug}', [ProductController::class, 'showDetail'])->
 Route::post('/contacts/store', [ContactController::class, 'store'])->name('contacts.store');
 Route::get('/abouts', [HomeController::class, 'about'])->name('about');
 Route::get('/services', [HomeController::class, 'service'])->name('services');
+Route::get('/projets', [HomeController::class, 'projets'])->name('projets');
+Route::get('/galerie-photos', [HomeController::class, 'galeries'])->name('galeries');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::post('/subscriber/store', [SubsciberController::class, 'store'])->name('subsciber.store');
 
@@ -43,6 +47,8 @@ Route::post('/subscriber/store', [SubsciberController::class, 'store'])->name('s
 Route::get('/dashboard', [DashboardController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+
+    Route::get('/contact/{contact}/delete', [DashboardController::class, 'deleteContact'])->middleware(['auth', 'verified'])->name('deleteContact');
 
     Route::get('/slides-all', [SlideController::class, 'index'])->name('slides.index');
     Route::post('/slides/store', [SlideController::class, 'store'])->name('slides.store');
@@ -74,7 +80,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/category/{category}/update', [CategoryController::class, 'update'])->name('categories.update');
     Route::get('/category/{category}/destroy', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
-    
+
     Route::get('/activites-all', [ProductController::class, 'index'])->name('activites.index');
     Route::post('/activites/store', [ProductController::class, 'store'])->name('activites.store');
     Route::get('/activites-create/create', [ProductController::class, 'create'])->name('activites.create');
@@ -93,11 +99,25 @@ Route::middleware('auth')->group(function () {
     Route::post('/temoignages/store', [TemoignageController::class, 'store'])->name('temoignages.store');
     Route::get('/temoignages/create', [TemoignageController::class, 'create'])->name('temoignages.create');
     Route::get('/temoignages/{temoignage}/edit', [TemoignageController::class, 'edit'])->name('temoignages.edit');
-    Route::put('/temoignages/{temoignage}/update', [TemoignageController::class, 'update'])->name('temoignages.update');
+    Route::post('/temoignages/{temoignage}/update', [TemoignageController::class, 'update'])->name('temoignages.update');
     Route::get('/temoignages/{temoignage}/destroy', [TemoignageController::class, 'destroy'])->name('temoignages.destroy');
 
     Route::get('/organisations/create', [OrganisationController::class, 'create'])->name('organisations.create');
     Route::put('/organisations/{organisation}/update', [OrganisationController::class, 'update'])->name('organisations.update');
+
+    Route::get('/nos-partenaires', [PartenaireController::class, 'index'])->name('partenaires.index');
+    Route::put('/partenaires/{partenaire}/update', [PartenaireController::class, 'update'])->name('partenaires.update');
+    Route::get('/partenaires/{partenaire}/edit', [PartenaireController::class, 'show'])->name('partenaires.edit');
+    Route::get('/partenaires/{partenaire}/destroy', [PartenaireController::class, 'destroy'])->name('partenaires.destroy');
+    Route::get('/partenaires/create', [PartenaireController::class, 'create'])->name('partenaires.create');
+    Route::post('/partenaires/store', [PartenaireController::class, 'store'])->name('partenaires.store');
+
+    Route::get('/nos-galeries', [GaleryController::class, 'index'])->name('galeries.index');
+    Route::put('/galeries/{galery}/update', [GaleryController::class, 'update'])->name('galeries.update');
+    Route::get('/galeries/{galery}/edit', [GaleryController::class, 'show'])->name('galeries.edit');
+    Route::get('/galeries/{galery}/destroy', [GaleryController::class, 'destroy'])->name('galeries.destroy');
+    Route::get('/galeries/create', [GaleryController::class, 'create'])->name('galeries.create');
+    Route::post('/galeries/store', [GaleryController::class, 'store'])->name('galeries.store');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
